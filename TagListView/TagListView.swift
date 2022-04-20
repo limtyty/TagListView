@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Ela. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 @objc public protocol TagListViewDelegate {
@@ -458,3 +459,4 @@ open class TagListView: UIView {
         }
     }
 }
+#endif

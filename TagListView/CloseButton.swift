@@ -5,9 +5,8 @@
 //  Created by Benjamin Wu on 2/11/16.
 //  Copyright © 2016 Ela. All rights reserved.
 //
-
+#if canImport(UIKit)
 import UIKit
-
 internal class CloseButton: UIButton {
 
     var iconSize: CGFloat = 10
@@ -40,3 +39,4 @@ internal class CloseButton: UIButton {
     }
 
 }
+#endif
