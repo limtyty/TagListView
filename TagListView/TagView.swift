@@ -162,12 +162,10 @@ open class TagView: UIButton {
 
   public init(title: String) {
     super.init(frame: CGRect.zero)
-    if image != nil {
       let attachment = NSTextAttachment()
       if #available(iOS 13.0, *) {
         attachment.image = UIImage(systemName: "checkmark.circle.fill")!
       }
-      attachment.image = image
       let imageOffsetY: CGFloat = -5.0
       attachment.bounds = CGRect(x: 0, y: imageOffsetY, width: attachment.image!.size.width, height: attachment.image!.size.height)
 
@@ -178,11 +176,6 @@ open class TagView: UIButton {
       let string = NSMutableAttributedString(string: title, attributes: [:])
       mutableAttributedString.append(string)
       setAttributedTitle(mutableAttributedString, for: UIControl.State())
-    }else{
-
-          setTitle(title, for: UIControl.State())
-    }
-
     setupView()
   }
 
