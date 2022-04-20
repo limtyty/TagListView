@@ -5,7 +5,6 @@
 //  Created by Dongyuan Liu on 2015-05-09.
 //  Copyright (c) 2015 Ela. All rights reserved.
 //
-#if canImport(UIKit)
 import UIKit
 
 @IBDesignable
@@ -160,22 +159,21 @@ open class TagView: UIButton {
     setupView()
   }
 
-  public init(title: String) {
+  public init(title: String,image: UIImage?) {
     super.init(frame: CGRect.zero)
-      let attachment = NSTextAttachment()
-      if #available(iOS 13.0, *) {
-        attachment.image = UIImage(systemName: "checkmark.circle.fill")!
-      }
-      let imageOffsetY: CGFloat = -5.0
-      attachment.bounds = CGRect(x: 0, y: imageOffsetY, width: attachment.image!.size.width, height: attachment.image!.size.height)
+    let attachment = NSTextAttachment()
 
-      let attachmentString = NSAttributedString(attachment: attachment)
-      let mutableAttributedString = NSMutableAttributedString()
-      mutableAttributedString.append(attachmentString)
+    attachment.image = image
+    let imageOffsetY: CGFloat = -5.0
+    attachment.bounds = CGRect(x: 0, y: imageOffsetY, width: attachment.image!.size.width, height: attachment.image!.size.height)
 
-      let string = NSMutableAttributedString(string: title, attributes: [:])
-      mutableAttributedString.append(string)
-      setAttributedTitle(mutableAttributedString, for: UIControl.State())
+    let attachmentString = NSAttributedString(attachment: attachment)
+    let mutableAttributedString = NSMutableAttributedString()
+    mutableAttributedString.append(attachmentString)
+
+    let string = NSMutableAttributedString(string: title, attributes: [:])
+    mutableAttributedString.append(string)
+    setAttributedTitle(mutableAttributedString, for: UIControl.State())
     setupView()
   }
 
@@ -228,7 +226,6 @@ open class TagView: UIButton {
     }
   }
 }
-#endif
 
 /// Swift < 4.2 support
 #if !(swift(>=4.2))
