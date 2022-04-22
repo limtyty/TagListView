@@ -171,7 +171,7 @@ open class TagView: UIButton {
       let mutableAttributedString = NSMutableAttributedString()
       mutableAttributedString.append(attachmentString)
 
-      let string = NSMutableAttributedString(string: title, attributes: [:])
+      let string = NSMutableAttributedString(string: " " + title, attributes: [:])
       mutableAttributedString.append(string)
       setAttributedTitle(mutableAttributedString, for: UIControl.State())
     }else{
