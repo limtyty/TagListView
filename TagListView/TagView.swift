@@ -159,21 +159,24 @@ open class TagView: UIButton {
     setupView()
   }
 
-  public init(title: String,image: UIImage?) {
+  public init(title: String,image: UIImage? = nil) {
     super.init(frame: CGRect.zero)
-    let attachment = NSTextAttachment()
+    if image != nil {
+      let attachment = NSTextAttachment()
+      attachment.image = image
+      let imageOffsetY: CGFloat = -5.0
+      attachment.bounds = CGRect(x: 0, y: imageOffsetY, width: attachment.image!.size.width, height: attachment.image!.size.height)
 
-    attachment.image = image
-    let imageOffsetY: CGFloat = -5.0
-    attachment.bounds = CGRect(x: 0, y: imageOffsetY, width: attachment.image!.size.width, height: attachment.image!.size.height)
+      let attachmentString = NSAttributedString(attachment: attachment)
+      let mutableAttributedString = NSMutableAttributedString()
+      mutableAttributedString.append(attachmentString)
 
-    let attachmentString = NSAttributedString(attachment: attachment)
-    let mutableAttributedString = NSMutableAttributedString()
-    mutableAttributedString.append(attachmentString)
-
-    let string = NSMutableAttributedString(string: title, attributes: [:])
-    mutableAttributedString.append(string)
-    setAttributedTitle(mutableAttributedString, for: UIControl.State())
+      let string = NSMutableAttributedString(string: title, attributes: [:])
+      mutableAttributedString.append(string)
+      setAttributedTitle(mutableAttributedString, for: UIControl.State())
+    }else{
+      setTitle(title, for: UIControl.State())
+    }
     setupView()
   }
 
